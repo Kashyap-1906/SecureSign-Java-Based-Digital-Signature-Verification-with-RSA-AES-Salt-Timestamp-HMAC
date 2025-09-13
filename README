@@ -1,0 +1,29 @@
+This project presents a Digital Signature Verification System using RSA with random salt values and
+timestamping, ensuring data integrity, authenticity, and security for digital communications and
+transactions. The system is designed to enhance the security of digital signatures by preventing
+unauthorized alterations and ensuring the verifiability of signed data. It consists of three key phases:
+key generation, message signing, and signature verification.
+In the key generation phase, an RSA key pair (public and private keys) is generated, where the private
+key is used for signing the message, and the public key is used for verification. During the signing
+phase, the user inputs a message along with a randomly generated salt, which is then combined with a
+12-hour formatted timestamp (HH:MM:SS AM/PM) to form a unique string that is representative of
+both the message and the time of signing. This modified message undergoes a cryptographic hashing
+process using SHA-256, followed by encryption with the private RSA key to generate the digital
+signature. The output includes the digital signature and the associated timestamp, which together form
+a reliable authentication method. In the verification phase, the system extracts the stored timestamp
+and signature, reconstructs the original message, hashes it again, and verifies the signature using the
+public RSA key. If the verification is successful, the system confirms the authenticity of the message,
+ensuring that it has not been altered.
+In addition to the RSA approach, this project also compares the use of RSA with an AES-based digital
+signature system. AES, being a symmetric encryption algorithm, uses a shared key for both encryption
+and decryption. The system employs HMAC (Hash-based Message Authentication Code) with AES
+for message integrity checks. The comparison of RSA and AES highlights RSA’s benefits of higher
+security and non-repudiation, which is critical in scenarios where the authenticity of a message and its
+timestamp needs to be independently verified. On the other hand, AES offers better performance and
+faster encryption and decryption speeds due to its symmetric nature but requires secure key
+distribution, making it less suitable for non-repudiation purposes.
+This project is implemented in Java, leveraging both RSA and AES encryption algorithms along with
+cryptographic hashing and HMAC for message integrity. The system automates the entire process,
+ensuring that users can easily sign and verify messages without manual intervention. By integrating
+these encryption techniques, the project offers a versatile solution for secure communication, digital
+contracts, and identity authentication.
